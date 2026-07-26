@@ -1,0 +1,71 @@
+{
+  "objective": "Export all publicly visible comments from a WeChat Official Account",
+  "acceptance_checks": [
+    "covers every discoverable article",
+    "exports public comments and visible replies",
+    "does not send messages or expose credentials"
+  ],
+  "priorities": [
+    "coverage_desc",
+    "expected_minutes_asc",
+    "risk_asc",
+    "invasiveness_asc",
+    "success_probability_desc",
+    "evidence_quality_desc",
+    "reversible_desc"
+  ],
+  "candidates": [
+    {
+      "id": "direct-session-technique",
+      "approach": "Reuse the already authenticated session with lightweight direct requests",
+      "hard_constraints": {
+        "public_data_only": true,
+        "all_articles": true,
+        "no_external_message": true
+      },
+      "coverage": 1.0,
+      "success_probability": 0.95,
+      "minutes": {
+        "research": 15,
+        "setup": 0,
+        "execute": 75,
+        "verify": 10,
+        "cleanup": 5
+      },
+      "failure_cost_minutes": 20,
+      "risk": 1,
+      "invasiveness": 0,
+      "reversible": true,
+      "evidence_quality": 3,
+      "evidence": [
+        "Observed end-to-end export of more than ten thousand public comments"
+      ]
+    },
+    {
+      "id": "exporter-plus-proxy-stack",
+      "approach": "Deploy wechat-article-exporter and wxdown-service with a local interception proxy",
+      "hard_constraints": {
+        "public_data_only": true,
+        "all_articles": true,
+        "no_external_message": true
+      },
+      "coverage": 1.0,
+      "success_probability": 0.55,
+      "minutes": {
+        "research": 30,
+        "setup": 45,
+        "execute": 180,
+        "verify": 20,
+        "cleanup": 15
+      },
+      "failure_cost_minutes": 90,
+      "risk": 2,
+      "invasiveness": 3,
+      "reversible": true,
+      "evidence_quality": 2,
+      "evidence": [
+        "Observed export of one article after approximately one hour"
+      ]
+    }
+  ]
+}

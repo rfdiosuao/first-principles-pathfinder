@@ -1,0 +1,4 @@
+interface:
+  display_name: "第一性原理最短路径"
+  short_description: "从第一性原理调研候选方案，选择并执行最短可验证路径"
+  default_prompt: "使用 $first-principles-pathfinder 先调研并比较候选路线，再以第一性原理执行达到目标的最短可验证路径。"
